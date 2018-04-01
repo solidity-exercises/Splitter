@@ -1,0 +1,22 @@
+{
+  "name": "splitter",
+  "version": "1.0.0",
+  "description": "Splitter exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solidity-exercises/Splitter.git"
+  },
+  "author": "Stefan Arnaudov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/solidity-exercises/Splitter/issues"
+  },
+  "homepage": "https://github.com/solidity-exercises/Splitter#readme",
+  "dependencies": {
+    "zeppelin-solidity": "1.8.0"
+  }
+}

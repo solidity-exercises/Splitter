@@ -11,8 +11,8 @@ contract Splitter is Destructible {
 	event LogSplit(address indexed holder, uint256 splitAmount);
 	event LogWithdrawal(address indexed holder, address indexed recipient, uint256 withdrawalAmount);
 	
-	mapping (address=>address[]) recipients;
-	mapping (address=>mapping(address=>uint256)) allowed; // pull
+	mapping (address=>address[]) public recipients;
+	mapping (address=>mapping(address=>uint256)) public allowed; // pull
 
 	/**
 	* @dev Declare maximum recipients count in order

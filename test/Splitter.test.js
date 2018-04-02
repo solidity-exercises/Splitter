@@ -26,7 +26,7 @@ contract('Splitter', ([first, another, yetAnother, overTheMax]) => {
 		// Arrange
 		const balanceDefaultValue = 0;
 		// Act
-		const result = await sut.getContractBalance();
+		const result = await sut.getContractBalance.call();
 		// Assert
 		assert.equal(result, 0);
 	});
@@ -36,7 +36,7 @@ contract('Splitter', ([first, another, yetAnother, overTheMax]) => {
 		await sut.addRecipient(another);
 		await sut.split({ value: 1 });
 		// Act
-		const result = await sut.getContractBalance();
+		const result = await sut.getContractBalance.call();
 		// Assert
 		assert.equal(result, 1);
 	});
@@ -48,7 +48,7 @@ contract('Splitter', ([first, another, yetAnother, overTheMax]) => {
 		await sut.split({ value: 3 });
 		await sut.withdrawFrom(first, 1, { from: another });
 		// Act
-		const result = await sut.getContractBalance();
+		const result = await sut.getContractBalance.call();
 		// Assert
 		assert.equal(result, 2);
 	});

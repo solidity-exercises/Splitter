@@ -18,5 +18,8 @@
   "homepage": "https://github.com/solidity-exercises/Splitter#readme",
   "dependencies": {
     "zeppelin-solidity": "1.8.0"
+  },
+  "devDependencies": {
+    "solidity-coverage": "^0.4.15"
   }
 }

@@ -10,7 +10,7 @@ contract Splitter is Destructible {
 	event LogNewRecipient(address indexed holder, address indexed recipient);
 	event LogSplit(address indexed holder, uint256 splitAmount);
 	event LogWithdrawal(address indexed holder, address indexed recipient, uint256 withdrawalAmount);
-	
+
 	mapping (address=>address[]) public recipients;
 	mapping (address=>mapping(address=>uint256)) public allowed; // pull
 
@@ -21,7 +21,7 @@ contract Splitter is Destructible {
 	uint8 public constant MAX_RECIPIENTS_COUNT = 128;
 
 	modifier recipientsCountRestricted() {
-		require(recipients[msg.sender].length <= MAX_RECIPIENTS_COUNT);
+		require(recipients[msg.sender].length < MAX_RECIPIENTS_COUNT);
 		_;
 	}
 
@@ -41,7 +41,7 @@ contract Splitter is Destructible {
 	}
 
 	modifier hasEnoughAllowance(address _from, uint256 _amount) {
-		require(allowed[_from][msg.sender].sub(1) >= _amount);
+		require(allowed[_from][msg.sender] >= _amount.add(1));
 		_;
 	}
 
@@ -56,7 +56,7 @@ contract Splitter is Destructible {
 		* @dev Surplus one allows us to avoid storing boolean variable to check
 		* whether the `msg.sender` already has such a recipient.
 		*/
-		allowed[msg.sender][_newRecipient] = allowed[msg.sender][_newRecipient].add(1);
+		allowed[msg.sender][_newRecipient] = 1;
 
 		recipients[msg.sender].push(_newRecipient);
 
